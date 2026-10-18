@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.dll
+*.pdb
+*.zip
+*.log
+**/diagnostics/
+capture-*/
+*.json.gz
+body-fixture.json
+results.json
+report.json
+performance.json
