@@ -52,7 +52,7 @@ The private scratch mesh is protected with DontUnloadUnusedAsset, recreated if d
 SVS's Mesh.GetBoneWeights(List) and Application.onBeforeRender registration are unavailable unstripping stubs. The adapter uses Mesh.boneWeights and does not register that event. A compatibility audit walks the plugin's interop calls, transitive managed wrappers, and the physics hooks and the read-only Human.LateUpdate observation hook:
 
 ```powershell
-dotnet run --project interop-audit/InteropAudit.csproj -c Release -- src/bin/Release/net6.0/SVS_CollisionPlus.dll 'PATH_TO_GAME'
+dotnet run --project interop-audit/InteropAudit.csproj -c Release '-p:GameDir=PATH_TO_GAME' -- src/bin/Release/net6.0/SVS_CollisionPlus.dll 'PATH_TO_GAME'
 ```
 
 For another installation, supply -p:GameDir=... at build time, or -p:CecilPath=... to select Mono.Cecil.dll. This audit detects unavailable wrappers, not native execution failures. The optional geometry fixture retains a 0.6.6 pregnancy formula reference; native game behavior and visual results require a game run.
@@ -81,7 +81,7 @@ The performance harness includes the unmodified 0.1.3 algorithm in a separate na
 dotnet run --project performance-tests/PerformanceTests.csproj -c Release -- 'LOCAL_CAPTURE_SESSION' performance.json
 ```
 
-The supplied report contains timings and counts only; scene geometry is not redistributed. Nine distinct captured frames produced 432 identical solver comparisons and 44,648 identical nearest-surface comparisons. Mean breast-abdomen solve cost was 12.81 ms before and 1.66 ms after; refitting both body surfaces averaged 0.51 ms before and 0.58 ms after. These are offline measurements on recorded game geometry, not measurements of in-game FPS. Other body and ground contacts are outside this focused performance claim.
+The performance report contains timings and counts only; scene geometry is not redistributed. Nine distinct captured frames produced 432 identical solver comparisons and 44,648 identical nearest-surface comparisons. Mean breast-abdomen solve cost was 12.81 ms before and 1.66 ms after; refitting both body surfaces averaged 0.51 ms before and 0.58 ms after. These are offline measurements on recorded game geometry, not measurements of in-game FPS. Other body and ground contacts are outside this focused performance claim.
 
 The old capture schema does not store the original BVH layout or its equal-distance triangle priority. Reconstructing it from a later pose can therefore differ from the recorded live solver, including when using the unchanged 0.1.3 code. The optimization comparison uses the same initial topology and geometry for both versions and asserts exact equality; it does not claim every reconstructed tree reproduces every recorded live output.
 
