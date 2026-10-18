@@ -1,10 +1,10 @@
-# 更新记录
+# Changelog
 
 ## 0.1.4
 
-- 发布 SVS 胸腹软碰撞插件，提供独立的胸部与其他身体、地面接触开关。
-- 优化最近表面查找与身体区域边界，保持原有采样、接触结果与物理参数。
-- 正常使用默认关闭全量现场采集，保留诊断与离线重放工具。
-- 保留负数 Unity 实例编号、临时网格生命周期与 SVS interop 兼容修正。
+- Publish the SVS breast–abdomen soft-contact plugin, with independent breast–body and breast–ground switches.
+- Optimize nearest-surface traversal and region bounds while preserving probes, contact results and physics parameters.
+- Disable full diagnostic capture by default for normal play; retain capture, replay and performance tools.
+- Preserve fixes for signed Unity instance IDs, scratch mesh lifetime and unavailable SVS interop wrappers.
 
-基于 [AL Collision Plus 0.1.11](https://github.com/rock-1995/AL_CollisionPlus) 适配；早期 SVS 0.1.0–0.1.3 为适配与诊断迭代。
+Adapted from [AL Collision Plus 0.1.11](https://github.com/rock-1995/AL_CollisionPlus). Earlier SVS builds 0.1.0–0.1.3 were adaptation and diagnostic iterations.
